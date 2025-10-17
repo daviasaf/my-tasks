@@ -31,18 +31,17 @@ function enviarDados() {
     desc: userTaskDesc.value,
     id: (idTask.value += 1),
   };
-  let nomeValido = item.nome.trim().length>0
-  let descValido = item.nome.trim().length>0
-  if(nomeValido && descValido){
+  let nomeValido = item.nome.trim().length > 0;
+  let descValido = item.desc.trim().length > 0;
+  if (nomeValido && descValido) {
     tasks.value.push(item);
     let taskString = JSON.stringify(tasks.value);
     localStorage.setItem("tasks", taskString);
-    semErroDetectado()
-    limparInputs()
-    return
+    semErroDetectado();
+    limparInputs();
+    return;
   }
-  erroDetectado()
-
+  erroDetectado();
 }
 function deletandoTask(idTaskDeletar) {
   tasks.value = tasks.value.filter((tr) => tr.id != idTaskDeletar);
@@ -63,66 +62,64 @@ function limparInputs() {
   userTaskDesc.value = "";
 }
 function erroDetectado() {
-  isError.value = true
+  isError.value = true;
 }
 function semErroDetectado() {
-  isError.value = false
+  isError.value = false;
 }
 </script>
 
 <template>
   <Header />
-  <main class="h-auto min-h-screen m-3 flex justify-center items-center">
-    <div class="w-full">
-      <!-- Área de escrever as tarefas -->
-      <form
-        @submit.prevent="enviarDados"
-        :class="isError ? 'with-error' : 'no-error'"
-        class="grid gap-2 max-w-md bg-gray-100 border-2 border-green-200 rounded p-5 mb-3 mx-auto"
-      >
-        <p class="flex justify-center items-start text-2xl ">Escreva sua tarefa</p>
-        <label for="" class="flex items-end">Nome da tarefa</label>
-        <input
+  <main class="h-auto flex flex-col m-5 ">
+    <!-- Área de escrever as tarefas -->
+    <form
+      @submit.prevent="enviarDados"
+      :class="isError ? 'with-error' : 'no-error'"
+      class="grid gap-2 min-w-md bg-gray-100 border-2 border-green-200 rounded p-5 mx-auto mb-5"
+    >
+      <p class="flex justify-center items-start text-2xl">Escreva sua tarefa</p>
+      <label for="" class="flex items-end">Nome da tarefa</label>
+      <input
         type="text"
         name="userTaskName"
         maxlength="40"
         v-model="userTaskName"
-        class="hover:bg-gray-200 focus:bg-gray-200 text-center outline-0 rounded py-1.5 transition border-1 border-gray-300 "
-        />
-        <label for="" class="flex items-end">Descrição da tarefa</label>
-        <input
-          type="text"
-          name="userTaskDesc"
-          maxlength="40"
-          ref="inpu"
-          v-model="userTaskDesc"
-          class=" hover:bg-gray-200 focus:bg-gray-200 text-center outline-0 rounded py-1.5 px-5 transition border-1 border-gray-300"
-        />
-        <button
-          type="submit"
-          class="bg-gray-200 hover:bg-gray-300 rounded text-center w-full py-2 transition"
-        >
-          Enviar
-        </button>
-        <div v-show="isError" class="flex justify-center items-end">
-          <p >Preencha todos os campos</p>
-        </div>
-      </form>
-      <!-- Área de mostrar as tarefas -->
-      <div
-        v-show="tasks.length > 0"
-        id="mostrar-tarefa"
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-1"
+        class="hover:bg-gray-200 focus:bg-gray-200 text-center outline-0 rounded py-1.5 transition border-1 border-gray-300"
+      />
+      <label for="" class="flex items-end">Descrição da tarefa</label>
+      <input
+        type="text"
+        name="userTaskDesc"
+        maxlength="40"
+        ref="inpu"
+        v-model="userTaskDesc"
+        class="hover:bg-gray-200 focus:bg-gray-200 text-center outline-0 rounded py-1.5 px-5 transition border-1 border-gray-300"
+      />
+      <button
+        type="submit"
+        class="bg-gray-200 hover:bg-gray-300 rounded text-center w-full py-2 transition"
       >
-        <CardTask
-          @deletarTask="deletandoTask"
-          @atualizarTask="atualizandoTask"
-          v-for="task in tasks"
-          :key="task.id"
-          :task="task"
-        >
-        </CardTask>
+        Enviar
+      </button>
+      <div v-show="isError" class="flex justify-center items-end">
+        <p>Preencha todos os campos</p>
       </div>
+    </form>
+    <!-- Área de mostrar as tarefas -->
+    <div
+      v-show="tasks.length > 0"
+      id="mostrar-tarefa"
+      class="flex flex-wrap justify-evenly"
+    >
+      <CardTask
+        @deletarTask="deletandoTask"
+        @atualizarTask="atualizandoTask"
+        v-for="task in tasks"
+        :key="task.id"
+        :task="task"
+      >
+      </CardTask>
     </div>
   </main>
   <Footer />
@@ -130,10 +127,10 @@ function semErroDetectado() {
 
 <style scoped>
 .with-error {
-  border: 2px solid oklch(80.8% 0.114 19.571) ;
+  border: 2px solid oklch(80.8% 0.114 19.571);
   border-radius: 4px;
 
-  #titulo{
+  #titulo {
     border-bottom: 1px solid oklch(80.8% 0.114 19.571);
   }
 }
