@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from "vue";
 import MenuConfig from "./MenuConfig.vue";
+import MensagemErro from "./MensagemErro.vue";
+
 const emit = defineEmits(["deletarTask", "atualizarTask"]);
 const props = defineProps(["task"]);
 
@@ -8,7 +10,6 @@ let taskName = ref(props.task.nome);
 let taskDesc = ref(props.task.desc);
 
 let isError = ref(false);
-
 let openConfig = ref(false);
 let openEdit = ref(false);
 
@@ -44,7 +45,7 @@ function semErroDetectado() {
 <template>
   <div
     :class="isError ? ' with-error' : 'no-error'"
-    class="h-auto min-h-30 grid grid-cols-1 p-3 my-1 bg-gray-100 border-2 border-green-200 rounded-sm gap-1 min-w-35 w-3/4 sm:w-1/3"
+    class="h-auto min-h-30 grid grid-cols-1 p-3 m-1 bg-gray-100 border-2 border-green-200 rounded-sm gap-1 min-w-35 w-3/4 sm:w-3/7 "
   >
     <div class="flex justify-end">
       <button @click="switchDisplayConfig" class="h-full">
@@ -75,7 +76,7 @@ function semErroDetectado() {
         Editar
       </button>
     </div>
-    <p v-if="isError" class="text-center">Não deixe nada vazio</p>
+   <MensagemErro v-show="isError" ></MensagemErro>
     <div
       v-if="openEdit"
       @click="switchDisplayEdit"

@@ -8,11 +8,10 @@ let showMenu = ref(false);
     class="bg-green-200 flex justify-between items-center px-6 py-4 overflow-x-hidden"
   >
     <h1 class="text-xl">My Tasks</h1>
-    <p @click="showMenu = !showMenu" class="sm:hidden cursor-pointer"><img src="../../public/menu.svg" class="w-6 h-6" alt="Menu"></p>
-    <ul class="hidden sm:flex text-sm w-50 justify-between">
-      <li><a href="#">Link 1</a></li>
-      <li><a href="#">Link 2</a></li>
-      <li><a href="#">Link 3</a></li>
+    <p @click="showMenu = !showMenu" class="sm:hidden cursor-pointer"><img src="/public/menu.svg" class="w-6 h-6" alt="Menu"></p>
+    <ul class="hidden sm:flex text-sm w-1/4 md:w-1/6 justify-around">
+      <li><slot name="link1" ></slot></li>
+      <li><slot name="link2" ></slot></li>
     </ul>
     <div
       v-if="showMenu"
