@@ -81,16 +81,19 @@ function semErroDetectado() {
       @click="switchDisplayEdit"
       class="fixed inset-0 bg-black opacity-50 z-40"
     ></div>
+
+
+    <!-- CONFIG BAR -->
     <div
       v-if="openEdit"
-      class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-100 w-1/3 h-auto rounded shadow-lg grid gap-2 p-5 z-50"
+      class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-100 min-w-5/6 sm:min-w-2/3 md:min-w-1/3 h-auto rounded shadow-lg grid grid-cols-1 gap-2 p-5 z-50"
       >
       <div class=" fixed right-2 top-2 ">
         <button @click="switchDisplayEdit"  class="h-full" >
           <img src="../../public/cross.svg" class="w-6 h-6 p-1.5 transition hover:bg-gray-300 rounded " >
         </button>
       </div>
-      <label for=""> Nome </label>
+      <label class="w-full"> Nome </label>
       <input type="text" v-model="taskName" class="bg-gray-200 text-center p-1 " />
       <label for=""> Descrição </label>
       <input type="text"  v-model="taskDesc" class="bg-gray-200  text-center p-1" />

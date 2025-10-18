@@ -74,58 +74,62 @@ function semErroDetectado() {
 </script>
 
 <template>
-  <Header />
-  <main class="h-auto flex flex-col m-5 ">
-    <!-- Área de escrever as tarefas -->
-    <form
-      @submit.prevent="enviarDados"
-      :class="isError ? 'with-error' : 'no-error'"
-      class="grid grid-cols-1 bg-gray-100 border-2 rounded p-5 mx-auto mb-5 min-w-1/3 "
-    >
-      <p class="flex justify-center items-start text-2xl">Escreva sua tarefa</p>
-      <label for="userTaskName" class="flex items-end">Nome da tarefa</label>
-      <input
-        type="text"
-        name="userTaskName"
-        maxlength="40"
-        v-model="userTaskName"
-        class="hover:bg-gray-200 focus:bg-gray-200 text-center outline-0 rounded py-1.5 transition border-1 border-gray-300"
-      />
-      <label for="" class="flex items-end">Descrição da tarefa</label>
-      <input
-        type="text"
-        name="userTaskDesc"
-        maxlength="40"
-        v-model="userTaskDesc"
-        class="hover:bg-gray-200 focus:bg-gray-200 text-center outline-0 rounded py-1.5 px-5 transition border-1 border-gray-300"
-      />
-      <button
-        type="submit"
-        class="bg-gray-200 hover:bg-gray-300 rounded text-center py-2 transition"
+  <div class="flex min-h-screen flex-col justify-between">
+    <Header />
+    <main class="h-auto flex flex-col m-5">
+      <!-- Área de escrever as tarefas -->
+      <form
+        @submit.prevent="enviarDados"
+        :class="isError ? 'with-error' : 'no-error'"
+        class="grid grid-cols-1 bg-gray-100 border-2 rounded p-5 mx-auto mb-5 min-w-1/3"
       >
-        Enviar
-      </button>
-      <div v-show="isError" class="flex justify-center items-end">
-        <p>Preencha todos os campos</p>
+        <p class="flex justify-center items-start text-2xl">
+          Escreva sua tarefa
+        </p>
+        <label for="userTaskName" class="flex items-end">Nome da tarefa</label>
+        <input
+          type="text"
+          name="userTaskName"
+          maxlength="40"
+          v-model="userTaskName"
+          class="hover:bg-gray-200 focus:bg-gray-200 text-center outline-0 rounded py-1.5 transition border-1 border-gray-300"
+        />
+        <label for="" class="flex items-end">Descrição da tarefa</label>
+        <input
+          type="text"
+          name="userTaskDesc"
+          maxlength="40"
+          v-model="userTaskDesc"
+          class="hover:bg-gray-200 focus:bg-gray-200 text-center outline-0 rounded py-1.5 px-5 transition border-1 border-gray-300"
+        />
+        <button
+          type="submit"
+          class="bg-gray-200 hover:bg-gray-300 rounded text-center py-2 transition"
+        >
+          Enviar
+        </button>
+        <div v-show="isError" class="flex justify-center items-end">
+          <p>Preencha todos os campos</p>
+        </div>
+      </form>
+      <!-- Área de mostrar as tarefas -->
+      <div
+        v-show="tasks.length > 0"
+        id="mostrar-tarefa"
+        class="flex flex-wrap justify-evenly"
+      >
+        <CardTask
+          @deletarTask="deletandoTask"
+          @atualizarTask="atualizandoTask"
+          v-for="task in tasks"
+          :key="task.id"
+          :task="task"
+        >
+        </CardTask>
       </div>
-    </form>
-    <!-- Área de mostrar as tarefas -->
-    <div
-      v-show="tasks.length > 0"
-      id="mostrar-tarefa"
-      class="flex flex-wrap justify-evenly"
-    >
-      <CardTask
-        @deletarTask="deletandoTask"
-        @atualizarTask="atualizandoTask"
-        v-for="task in tasks"
-        :key="task.id"
-        :task="task"
-      >
-      </CardTask>
-    </div>
-  </main>
-  <Footer />
+    </main>
+    <Footer />
+  </div>
 </template>
 
 <style scoped>
