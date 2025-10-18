@@ -74,14 +74,14 @@ function semErroDetectado() {
 </script>
 
 <template>
-  <div class="flex min-h-screen flex-col justify-between">
+  <div class="flex min-h-screen flex-col justify-between min-w-35">
     <Header />
-    <main class="h-auto flex flex-col m-5">
+    <main class="h-auto flex flex-col my-5">
       <!-- Área de escrever as tarefas -->
       <form
         @submit.prevent="enviarDados"
         :class="isError ? 'with-error' : 'no-error'"
-        class="grid grid-cols-1 bg-gray-100 border-2 gap-1 rounded p-5 mx-auto mb-5 min-w-1/3"
+        class="grid grid-cols-1 bg-gray-100 border-2 gap-1 rounded p-5 mx-auto mb-5 min-w-35   w-3/4 sm:w-1/3"
       >
         <p class="flex justify-center items-start text-2xl">
           Escreva sua tarefa
@@ -100,7 +100,7 @@ function semErroDetectado() {
           name="userTaskDesc"
           maxlength="40"
           v-model="userTaskDesc"
-          class="hover:bg-gray-200 focus:bg-gray-200 text-center outline-0 rounded py-1.5 px-5 transition border-1 border-gray-300"
+          class="hover:bg-gray-200 focus:bg-gray-200 text-center outline-0  rounded py-1.5  transition border-1 border-gray-300"
         />
         <button
           type="submit"
