@@ -33,7 +33,11 @@ function enviarDados() {
   };
   let nomeValido = item.nome.trim().length > 0;
   let descValido = item.desc.trim().length > 0;
+  console.log(nomeValido);
+  console.log(nomeValido);
   if (nomeValido && descValido) {
+    console.log(nomeValido);
+    console.log(descValido);
     tasks.value.push(item);
     let taskString = JSON.stringify(tasks.value);
     localStorage.setItem("tasks", taskString);
@@ -76,10 +80,10 @@ function semErroDetectado() {
     <form
       @submit.prevent="enviarDados"
       :class="isError ? 'with-error' : 'no-error'"
-      class="grid gap-2 min-w-md bg-gray-100 border-2 border-green-200 rounded p-5 mx-auto mb-5"
+      class="grid grid-cols-1 bg-gray-100 border-2 rounded p-5 mx-auto mb-5 min-w-1/3 "
     >
       <p class="flex justify-center items-start text-2xl">Escreva sua tarefa</p>
-      <label for="" class="flex items-end">Nome da tarefa</label>
+      <label for="userTaskName" class="flex items-end">Nome da tarefa</label>
       <input
         type="text"
         name="userTaskName"
@@ -92,13 +96,12 @@ function semErroDetectado() {
         type="text"
         name="userTaskDesc"
         maxlength="40"
-        ref="inpu"
         v-model="userTaskDesc"
         class="hover:bg-gray-200 focus:bg-gray-200 text-center outline-0 rounded py-1.5 px-5 transition border-1 border-gray-300"
       />
       <button
         type="submit"
-        class="bg-gray-200 hover:bg-gray-300 rounded text-center w-full py-2 transition"
+        class="bg-gray-200 hover:bg-gray-300 rounded text-center py-2 transition"
       >
         Enviar
       </button>
