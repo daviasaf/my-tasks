@@ -81,7 +81,7 @@ function semErroDetectado() {
       <form
         @submit.prevent="enviarDados"
         :class="isError ? 'with-error' : 'no-error'"
-        class="grid grid-cols-1 bg-gray-100 border-2 rounded p-5 mx-auto mb-5 min-w-1/3"
+        class="grid grid-cols-1 bg-gray-100 border-2 gap-1 rounded p-5 mx-auto mb-5 min-w-1/3"
       >
         <p class="flex justify-center items-start text-2xl">
           Escreva sua tarefa
@@ -104,7 +104,7 @@ function semErroDetectado() {
         />
         <button
           type="submit"
-          class="bg-gray-200 hover:bg-gray-300 rounded text-center py-2 transition"
+          class="bg-gray-200 hover:bg-gray-300 rounded text-center py-2 mt-2 transition"
         >
           Enviar
         </button>

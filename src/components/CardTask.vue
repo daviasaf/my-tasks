@@ -44,9 +44,9 @@ function semErroDetectado() {
 <template>
   <div
     :class="isError ? 'with-error' : 'no-error'"
-    class="bg-gray-100 border-2 border-green-200 rounded-sm h-auto min-h-30 w-100 p-3 gap-1 my-1"
+    class="bg-gray-100 border-2 border-green-200 rounded-sm h-auto min-h-30 w-100 p-3 gap-1 my-1 relative "
   >
-    <div class="flex justify-end">
+    <div class="absolute right-2 top-2">
       <button @click="switchDisplayConfig" class="h-full">
         <MenuConfig />
       </button>
