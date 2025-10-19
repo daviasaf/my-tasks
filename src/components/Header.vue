@@ -46,7 +46,7 @@ const rotaComStatus = computed(() => {
     <div
       v-show="showMenu"
       :class="showMenu ? 'right-0' : 'hidden'"
-      class="fixed top-0 flex flex-col 1 sm:hidden w-1/3 h-screen list-none bg-green-200"
+      class="fixed top-0 flex flex-col 1 sm:hidden w-2/3 h-screen list-none bg-green-200"
     >
       <IconButton @click="menuDisplay" class="hover:bg-green-300 m-2">
         <img src="../../public/cross.svg" alt="Botão sair" />

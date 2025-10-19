@@ -7,17 +7,17 @@ import pessoa3 from "../assets/pessoa3.jpg";
 </script>
 
 <template>
-  <!-- APRESENTAÇÃO DA P -->
+  <!-- APRESENTAÇÃO -->
   <div class="grid gap-4 grid-cols-1 mx-4 my-20">
-    <h1 class="text-5xl text-center uppe">My Tasks</h1>
-    <p>Salve suas tarefas em um único lugar!</p>
+    <h1 class="text-5xl text-center ">My Tasks</h1>
+    <p class="text-center">Salve suas tarefas em um único lugar!</p>
     <routerLink to="/tasks">
       <Button #buttonContent>Comece agora!</Button>
     </routerLink>
   </div>
 
   <!-- COMENTÁRIOS -->
-  <div class="flex flex-wrap justify-center my-10">
+  <div class="flex flex-wrap justify-center my-10 w-full">
     <UserComment :url="pessoa2">
       <template #nome>Jonas</template>
       <template #comentario>
