@@ -7,7 +7,7 @@ import MensagemErro from "../components/MensagemErro.vue";
 import { useTasks } from "../composables/useTasks";
 
 //Composables
-const { tasks, addTask, deleteTask, isError, userTaskName, userTaskDesc } =
+const { tasks, addTask, deleteTask, isErrorForm, userTaskName, userTaskDesc } =
   useTasks();
 
 function adicionarTarefa() {
@@ -29,7 +29,7 @@ function limparInputs() {
     <!-- ---------- ESCREVER AS TAREFAS ----------- -->
     <form
       @submit.prevent="adicionarTarefa"
-      :class="isError ? 'with-error' : 'no-error'"
+      :class="isErrorForm ? 'with-error' : 'no-error'"
       class="min-w-30 w-3/4 sm:w-3/5 md:w-2/5 grid grid-cols-1 gap-4 bg-gray-100 border-2 p-5 mx-auto rounded"
     >
       <p class="flex justify-center items-start text-2xl">Escreva sua tarefa</p>
@@ -44,7 +44,7 @@ function limparInputs() {
         v-model="userTaskDesc"
       ></inputText>
       <Button #buttonContent>Enviar</Button>
-      <MensagemErro v-show="isError"></MensagemErro>
+      <MensagemErro v-show="isErrorForm"></MensagemErro>
     </form>
 
     <!-- ---------- MOSTRAS AS TAREFAS ---------- -->

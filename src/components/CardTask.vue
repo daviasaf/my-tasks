@@ -7,10 +7,10 @@ import ModalEditTask from "./ModalEditTask.vue";
 import InputText from "../components/InputText.vue";
 import { useTasks } from "../composables/useTasks";
 
-const { isError, updateTask } = useTasks();
-
+const { updateTask } = useTasks();
 const emit = defineEmits(["deletarTask", "atualizarTask"]);
 const props = defineProps(["task"]);
+const isErrorCard = ref(false);
 
 let taskName = ref(props.task.nome);
 let taskDesc = ref(props.task.desc);
@@ -18,11 +18,22 @@ let taskDesc = ref(props.task.desc);
 let openConfig = ref(false);
 let openEdit = ref(false);
 
+function erroDetectadoTask() {
+  isErrorCard.value = true;
+}
+function semErroDetectadoTask() {
+  isErrorCard.value = false;
+}
+
 function deletarTarefa() {
   emit(`deletarTask`, props.task.id);
 }
 function atualizarTarefa() {
-  updateTask(taskName.value, taskDesc.value, props.task.id);
+  if (taskName.value && taskDesc.value) {
+    semErroDetectadoTask();
+    return updateTask(taskName.value, taskDesc.value, props.task.id);
+  }
+  return erroDetectadoTask();
 }
 function switchDisplayConfig() {
   openConfig.value = !openConfig.value;
@@ -34,13 +45,13 @@ function switchDisplayEdit() {
 
 <template>
   <div
-    :class="isError ? ' with-error' : 'no-error'"
+    :class="isErrorCard ? ' with-error' : 'no-error'"
     class="h-auto min-h-30 grid grid-cols-1 p-3 m-1 mt-5 bg-gray-100 border-2 border-green-200 rounded-sm gap-1 min-w-30 w-3/4 sm:w-3/7"
   >
     <!-- BUTTON -->
     <div class="flex justify-end">
       <IconButton @click="switchDisplayConfig" class="hover:bg-gray-300">
-        <img src="/menu-dots.svg" alt="Menu suspenso">
+        <img src="/menu-dots.svg" alt="Menu suspenso" />
       </IconButton>
     </div>
     <!-- TITLE -->
@@ -60,7 +71,7 @@ function switchDisplayEdit() {
       <Button @click="switchDisplayEdit" #buttonContent>Editar</Button>
     </div>
     <!-- ERRO -->
-    <MensagemErro v-show="isError"></MensagemErro>
+    <MensagemErro v-show="isErrorCard"></MensagemErro>
     <!-- MODAL -->
     <ModalEditTask
       :openEdit="openEdit"

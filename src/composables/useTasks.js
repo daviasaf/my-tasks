@@ -1,6 +1,10 @@
 import { ref, onMounted } from "vue";
 
-let isError = ref(false);
+let isErrorForm = ref(false);
+
+
+
+
 let taskStorage = localStorage.getItem("tasks");
 let tasks = ref(JSON.parse(taskStorage) || []);
 let idTask = ref(0);
@@ -10,12 +14,13 @@ let userTaskDesc = ref("");
 
 
 
-function erroDetectado() {
-  isError.value = true;
+function erroDetectadoForm() {
+  isErrorForm.value = true;
 }
-function semErroDetectado() {
-  isError.value = false;
+function semErroDetectadoForm() {
+  isErrorForm.value = false;
 }
+
 
 export function useTasks() {
   function updateId() {
@@ -45,9 +50,9 @@ export function useTasks() {
     if (nomeValido && descValido) {
       tasks.value.push(item);
       stringifyTask();
-      return semErroDetectado();
+      return semErroDetectadoForm();
     }
-    erroDetectado();
+    erroDetectadoForm();
   }
 
   function deleteTask(id) {
@@ -79,8 +84,10 @@ export function useTasks() {
     deleteTask,
     updateTask,
     updateId,
-    isError,
     userTaskName,
     userTaskDesc,
+    erroDetectadoForm,
+    semErroDetectadoForm,
+    isErrorForm,
   };
 }
