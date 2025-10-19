@@ -11,7 +11,7 @@ import { useTemplateRef } from 'vue';
       <img :src="props.url" class=" w-40 rounded-full border-2" >
     </div>
     <p class="my-2 text-lg text-center"> <slot name="nome" ></slot> </p>
-    <p> <slot name="comentario" ></slot> </p>
+    <p class="text-center"> <slot name="comentario" ></slot> </p>
   </div>
 </template>
 
