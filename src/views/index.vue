@@ -25,7 +25,7 @@ import UserComment from "../components/UserComment.vue";
     <UserComment url="src/assets/pessoa-3.jpg">
       <template #nome>Carmen</template>
       <template #comentario>
-        Nunca mais esqueci de fazer minhas tarefas :)
+        Incrível!
       </template>
     </UserComment>
     <UserComment url="src/assets/pessoa-1.jpg">

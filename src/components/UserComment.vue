@@ -10,7 +10,7 @@ import { useTemplateRef } from 'vue';
     <div  >
       <img :src="props.url" class="min-w-20 w-40 rounded-full border-2" >
     </div>
-    <p class="my-2 text-lg"> <slot name="nome" ></slot> </p>
+    <p class="my-2 text-lg text-center"> <slot name="nome" ></slot> </p>
     <p> <slot name="comentario" ></slot> </p>
   </div>
 </template>
