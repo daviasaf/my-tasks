@@ -36,7 +36,7 @@ import pessoa3 from '../assets/pessoa3.jpg'
     <UserComment :url="pessoa1">
       <template #nome>Francis</template>
       <template #comentario>
-        Nunca mais esqueci de fazer minhas tarefas :)
+        Simples e funcional!
       </template>
     </UserComment>
   </div>
