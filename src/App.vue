@@ -6,8 +6,6 @@ import Main from "./components/Main.vue";
 
 <template>
   <Header>
-    <template #link1 > <routerLink to="/"> Home</routerLink> </template>
-    <template #link2 ><routerLink to="/tasks"> Tasks</routerLink></template>
   </Header>
   <Main>
     <router-view></router-view>
