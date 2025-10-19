@@ -1,6 +1,11 @@
 <script setup>
 import Button from "../components/Button.vue";
 import UserComment from "../components/UserComment.vue";
+import pessoa1 from '../assets/pessoa1.jpg'
+import pessoa2 from '../assets/pessoa2.jpg'
+import pessoa3 from '../assets/pessoa3.jpg'
+
+
 </script>
 
 <template>
@@ -16,19 +21,19 @@ import UserComment from "../components/UserComment.vue";
 
 <!-- COMENTÁRIOS -->
   <div class="flex flex-wrap justify-center my-10">
-    <UserComment url="src/assets/pessoa-2.jpg">
+    <UserComment :url="pessoa2">
       <template #nome>Jonas</template>
       <template #comentario>
         Nunca mais esqueci de fazer minhas tarefas :)
       </template>
     </UserComment>
-    <UserComment url="src/assets/pessoa-3.jpg">
+    <UserComment :url="pessoa3">
       <template #nome>Carmen</template>
       <template #comentario>
         Incrível!
       </template>
     </UserComment>
-    <UserComment url="src/assets/pessoa-1.jpg">
+    <UserComment :url="pessoa1">
       <template #nome>Francis</template>
       <template #comentario>
         Nunca mais esqueci de fazer minhas tarefas :)
